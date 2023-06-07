@@ -16,6 +16,8 @@ test('testing class Character for wrong type', () => {
 
 test('testing levelUp function', () => {
   const character = new Character('ZZZ', 'Zombie');
+  character.attack = 40;
+  character.defence = 10;
   character.levelUp();
   expect(character).toEqual({
     name: 'ZZZ', type: 'Zombie', health: 100, level: 2, attack: 48, defence: 12,
@@ -27,6 +29,7 @@ test.each([
   [200, 0],
 ])('testing damage function for damage = %i', (damage, expected) => {
   const character = new Character('ZZZ', 'Zombie');
+  character.defence = 10;
   character.damage(damage);
   expect(character.health).toBe(expected);
 });
